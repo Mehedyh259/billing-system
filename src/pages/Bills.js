@@ -25,7 +25,7 @@ const Bills = ({ setTotal }) => {
     const [search, setSearch] = useState('');
 
     const getData = async () => {
-        const { data } = await axios.get('http://localhost:5000/api/billing-list', {
+        const { data } = await axios.get('https://billing-system-1542.herokuapp.com/api/billing-list', {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -48,8 +48,6 @@ const Bills = ({ setTotal }) => {
             }
         }
     }, [data, bills, search, setTotal, billLimit])
-
-
 
     const filterSearch = (event) => {
         const value = event.target.value;

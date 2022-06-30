@@ -20,7 +20,7 @@ const Registration = () => {
             password: data.password
         }
 
-        const { data: userData } = await axios.post('http://localhost:5000/api/registration', user);
+        const { data: userData } = await axios.post('https://billing-system-1542.herokuapp.com/api/registration', user);
         console.log(userData);
 
         if (userData?.result?.insertedId) {

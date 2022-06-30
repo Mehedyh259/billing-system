@@ -22,7 +22,7 @@ const Bills = ({ setTotal }) => {
     const [search, setSearch] = useState('');
 
     const getData = async () => {
-        const { data } = await axios.get('http://localhost:5000/api/billing-list');
+        const { data } = await axios.get('https://billing-system-1542.herokuapp.com/api/billing-list');
         return data;
     }
 

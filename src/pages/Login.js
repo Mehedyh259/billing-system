@@ -28,7 +28,7 @@ const Login = ({ setLoggedIn, loggedIn }) => {
             email: data.email,
             password: data.password
         }
-        const { data: response } = await axios.post('http://localhost:5000/api/login', user);
+        const { data: response } = await axios.post('https://billing-system-1542.herokuapp.com/api/login', user);
         if (response?.token) {
             localStorage.setItem('accessToken', response.token)
             setToken(response.token)

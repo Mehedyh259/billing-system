@@ -19,7 +19,7 @@ const UpdateBillModal = ({ billInfo, setBillInfo, refetch }) => {
                 email: data.email,
                 paid_amount: data.amount
             }
-            const { data: response } = await axios.put(`http://localhost:5000/api/update-billing/${billInfo._id}`, bill, {
+            const { data: response } = await axios.put(`https://billing-system-1542.herokuapp.com/api/update-billing/${billInfo._id}`, bill, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -27,6 +27,7 @@ const UpdateBillModal = ({ billInfo, setBillInfo, refetch }) => {
             if (response.modifiedCount) {
                 toast.success('bill updated successfully')
                 refetch();
+                setBillInfo(false)
             }
 
         } catch (error) {
@@ -46,7 +47,7 @@ const UpdateBillModal = ({ billInfo, setBillInfo, refetch }) => {
             <input type="checkbox" id="updatebill-modal" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
-                    <label htmlFor="updatebill-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label onClick={() => setBillInfo(null)} htmlFor="updatebill-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="font-bold text-xl">Update Bill</h3>
 
                     <form onSubmit={handleSubmit(onSubmit)}>

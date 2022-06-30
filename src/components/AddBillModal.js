@@ -21,7 +21,7 @@ const AddBillModal = ({ setAddModal, setLoading, setPageNumber, refetch }) => {
                 email: data.email,
                 paid_amount: data.amount
             }
-            const { data: response } = await axios.post('http://localhost:5000/api/add-billing', bill, {
+            const { data: response } = await axios.post('https://billing-system-1542.herokuapp.com/api/add-billing', bill, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -31,7 +31,7 @@ const AddBillModal = ({ setAddModal, setLoading, setPageNumber, refetch }) => {
                 setTimeout(() => {
                     refetch()
                     setLoading(false)
-                }, 1500)
+                }, 1000)
                 setAddModal(false)
                 setPageNumber(0)
             }
