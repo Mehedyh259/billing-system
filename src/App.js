@@ -10,6 +10,7 @@ import NotFound from './pages/NotFound';
 import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import RequireAuth from './components/RequireAuth';
+import Layout from './components/Layout';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -25,8 +26,8 @@ function App() {
 
 
   return (
-    <>
-      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} total={total} />
+    <Layout loggedIn={loggedIn} setLoggedIn={setLoggedIn} total={total}>
+
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
@@ -43,7 +44,7 @@ function App() {
 
       <ToastContainer />
 
-    </>
+    </Layout>
 
   );
 }
